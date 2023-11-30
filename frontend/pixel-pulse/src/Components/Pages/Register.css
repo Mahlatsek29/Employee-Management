@@ -1,0 +1,68 @@
+
+.register-container {
+    background-image: url('../Images/Main-Background.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .register-card {
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .register-logo {
+    width: 350px; /* Make the logo fill the width of the card */
+    height: 350px;
+    margin: 0 auto;
+    margin-top: -95px; /* Adjust the margin to center the logo on top of the card */
+    border-radius: 50%;
+  }
+  
+  .register-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .register-form {
+    padding: 20px;
+  }
+  
+  .register-button {
+    width: 100%;
+    background-color: #643b9f; /* RoyalPurple color */
+    border: none;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #795695; /* ButterflyBlush color */
+  }
+  
+  .login-link a {
+    color: #795695; /* ButterflyBlush color */
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 576px) {
+    .register-card {
+      width: 90%;
+    }
+  }
+  
