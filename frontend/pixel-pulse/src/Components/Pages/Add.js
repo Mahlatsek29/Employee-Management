@@ -75,7 +75,7 @@ function Add({ updateEmployeeData }) {
       updateEmployeeData(updatedData);
 
       // Reset form fields
-      setEmployeeData({
+      setEmployeeData((prevData) => ({
         name: '',
         surname: '',
         position: '',
@@ -83,7 +83,7 @@ function Add({ updateEmployeeData }) {
         phone: '',
         email: '',
         image: null,
-      });
+      }));
     } else {
       console.error('updateEmployeeData is not a function');
     }
