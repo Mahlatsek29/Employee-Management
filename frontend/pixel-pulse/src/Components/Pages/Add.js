@@ -36,8 +36,8 @@ const buttonStyle = {
 
 function Add({ updateEmployeeData }) {
   const [employeeData, setEmployeeData] = useState({
-    surname: '',
     name: '',
+    surname: '',
     position: '',
     department: '',
     phone: '',
@@ -63,17 +63,30 @@ function Add({ updateEmployeeData }) {
 
   const handleSave = (e) => {
     e.preventDefault();
-    // Add logic to save the employee data
 
-    // Save data to localStorage
-    const storedData = JSON.parse(localStorage.getItem('employeesData')) || [];
-    const updatedData = [...storedData, employeeData];
-    localStorage.setItem('employeesData', JSON.stringify(updatedData));
+    // Check if updateEmployeeData is a function before calling it
+    if (typeof updateEmployeeData === 'function') {
+      // Save data to localStorage
+      const storedData = JSON.parse(localStorage.getItem('employeesData')) || [];
+      const updatedData = [...storedData, employeeData];
+      localStorage.setItem('employeesData', JSON.stringify(updatedData));
 
-    // Update the parent component with the new data
-    updateEmployeeData(updatedData);
+      // Update the parent component with the new data
+      updateEmployeeData(updatedData);
 
-    // Perform any other necessary actions
+      // Reset form fields
+      setEmployeeData({
+        name: '',
+        surname: '',
+        position: '',
+        department: '',
+        phone: '',
+        email: '',
+        image: null,
+      });
+    } else {
+      console.error('updateEmployeeData is not a function');
+    }
   };
 
   return (
@@ -86,7 +99,77 @@ function Add({ updateEmployeeData }) {
           <Card.Body>
             <Card.Title className="card-title">Add New Employee</Card.Title>
             <Form onSubmit={handleSave}>
-              {/* Form fields here */}
+              <Form.Group controlId="formName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter name"
+                  name="name"
+                  value={employeeData.name}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formSurname">
+                <Form.Label>Surname</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter surname"
+                  name="surname"
+                  value={employeeData.surname}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formPosition">
+                <Form.Label>Position</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter position"
+                  name="position"
+                  value={employeeData.position}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formDepartment">
+                <Form.Label>Department</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter department"
+                  name="department"
+                  value={employeeData.department}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formPhone">
+                <Form.Label>Phone Number</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter phone number"
+                  name="phone"
+                  value={employeeData.phone}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  name="email"
+                  value={employeeData.email}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formImage">
+                <Form.Label>Image</Form.Label>
+                <Form.Control type="file" onChange={handleImageUpload} />
+              </Form.Group>
+
               <Button variant="primary" type="submit" style={buttonStyle}>
                 Save
               </Button>

@@ -14,13 +14,13 @@ const dashboardStyle = {
   justifyContent: 'center',
   alignItems: 'center',
   color: 'white',
-  position: 'relative', // Added relative positioning
+  position: 'relative', 
 };
 
 const logoStyle = {
   position: 'absolute',
-  top: '50%', // Center vertically
-  left: '50%', // Center horizontally
+  top: '50%', 
+  left: '50%', 
   transform: 'translate(-50%, -50%)', // Center the logo precisely
 };
 
